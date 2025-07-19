@@ -243,6 +243,40 @@
             flex-wrap: wrap;
         }
 
+            <style>
+        :root {
+            /* Light mode variables */
+            --primary-green: #22c55e;
+            --dark-green: #16a34a;
+            --white: #ffffff;
+            --light-gray: #f9fafb;
+            --dark-gray: #6b7280;
+            --text-dark: #111827;
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --border-color: #E5E7EB;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary-green: #22c55e;
+            --dark-green: #16a34a;
+            --white: #1a1a1a;
+            --light-gray: #2a2a2a;
+            --dark-gray: #a3a3a3;
+            --text-dark: #f3f4f6;
+            --bg-color: #121212;
+            --card-bg: #1f1f1f;
+            --border-color: #333333;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
         .btn-primary, .btn-secondary {
             padding: 1rem 2rem;
             border: none;
@@ -450,11 +484,11 @@
         }
 
         .product-card {
-            background: var(--white);
+            background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .product-card:hover {
@@ -546,10 +580,11 @@
         }
 
         .contact-form {
-            background: var(--white);
+            background: var(--card-bg);
             padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: background-color 0.3s ease;
         }
 
         .form-group {
@@ -783,21 +818,44 @@
             font-size: 1.5rem;
         }
 
+        /* Theme Toggle */
+        .theme-toggle {
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--light-gray);
+        }
+
+        .theme-toggle i {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            transition: transform 0.3s ease;
+        }
+
+        [data-theme="dark"] .theme-toggle i {
+            transform: rotate(-20deg);
+            color: #fbbf24;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-menu.active {
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--card-bg);
+            flex-direction: column;
+            padding: 2rem;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            transition: background-color 0.3s ease;
+        }            .nav-menu.active {
                 display: flex;
             }
 
@@ -885,6 +943,9 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <a href="#contact" class="cta-button">Get Quote</a>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
             <div class="mobile-menu">
                 <span></span>
                 <span></span>
@@ -1100,17 +1161,17 @@
                 <div class="testimonial-slide active">
                     <div class="stars">★★★★★</div>
                     <p class="testimonial-text">"Bethel ICT saved my laptop when I thought it was beyond repair. Their technicians are incredibly skilled and the service was fast and affordable. Highly recommended!"</p>
-                    <p class="testimonial-author">- Sarah Johnson, Business Owner</p>
+                    <p class="testimonial-author">- Sarah, Business Owner</p>
                 </div>
                 <div class="testimonial-slide">
                     <div class="stars">★★★★★</div>
                     <p class="testimonial-text">"Amazing cyber services! They helped us set up our entire office printing system and provided excellent ongoing support. Very professional team."</p>
-                    <p class="testimonial-author">- Michael Chen, IT Manager</p>
+                    <p class="testimonial-author">- Michael, IT Manager</p>
                 </div>
                 <div class="testimonial-slide">
                     <div class="stars">★★★★★</div>
                     <p class="testimonial-text">"Bought my new smartphone here and got an amazing deal. The staff was knowledgeable and helped me choose the perfect device for my needs."</p>
-                    <p class="testimonial-author">- Emily Rodriguez, Student</p>
+                    <p class="testimonial-author">- Emily, Student</p>
                 </div>
             </div>
         </div>
@@ -1217,7 +1278,7 @@
                         </div>
                         <div>
                             <h4>Phone</h4>
-                            <p>+254 700 123 456</p>
+                            <p>+254 700 037 863</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1235,7 +1296,7 @@
                         </div>
                         <div>
                             <h4>Location</h4>
-                            <p>Nairobi, Kenya<br>CBD - Tech Plaza</p>
+                            <p>Luanda, Kenya<br>Luanda-Sabatia Road</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1293,9 +1354,9 @@
                 </div>
                 <div class="footer-section">
                     <h3>Contact Info</h3>
-                    <p><i class="fas fa-phone"></i> +254 700 123 456</p>
+                    <p><i class="fas fa-phone"></i> +254 700 037 863</p>
                     <p><i class="fas fa-envelope"></i> info@bethelict.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Luanda, Kenya</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1310,6 +1371,43 @@
     </div>
 
     <script>
+        // Theme Switcher
+        const themeToggle = document.querySelector('.theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme preference or use system preference
+        const currentTheme = localStorage.getItem('theme') || 
+            (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        // Set initial theme
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                themeToggle.querySelector('i').classList.remove('fa-moon');
+                themeToggle.querySelector('i').classList.add('fa-sun');
+            }
+        }
+        
+        // Theme toggle click handler
+        themeToggle.addEventListener('click', function() {
+            const icon = this.querySelector('i');
+            let theme = document.documentElement.getAttribute('data-theme');
+            
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                theme = 'light';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                theme = 'dark';
+            }
+            
+            localStorage.setItem('theme', theme);
+        });
+
         // Loading Screen
         window.addEventListener('load', function() {
             setTimeout(function() {
